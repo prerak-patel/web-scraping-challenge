@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+
+  <!-- Jumbotron Begin -->
+  <div class="container">
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+  </div>
+
+  <!-- Jumbotron End -->
+
+  <!-- Begin Latest News -->
+  <div class="container">
+    <div class="row" style="margin-top: 40px;">
+      <div class="col-md-12">
+        <h1 class="display-4">Latest Mars News</h1>
+        <p class="lead">{{mars['latest_headline_title']}}.</p>
+        <p>{{mars['latest_headline_para']}}</p>
+      </div>
+    </div>
+  </div>
+  <!-- Latest News End-->
+
+  <!-- Begin Featured Mars Image -->
+  <div class="container">
+    <div class="row">
+      <!-- 7 columns Begin-->
+      <div class="col-lg-7" style="background-color: white; ">
+        <h3>Featured Mars Image</h3>
+        <table class="table" style="padding: 0px; border-top: 0px; border-bottom: none; background-color: white; ">
+          <tbody>
+            <tr>
+              <img style="float:left;"  width="100%" src="{{mars['mars_featured_image_url']}}">
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- 7 columns Begin-->
+
+      <!-- 5 columns Begin-->
+      <div class="col-lg-5" style="background-color: white; ">
+        <table class="table" style="border: 2px solid lightgrey; background-color: white; ">
+          <tbody>
+            <tr>
+              <td>
+                <h4>Current Weather on Mars</h4>
+                <p>{{mars['weather_tweet']}}</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="table" style="background-color: white; ">
+          <tbody>
+            <tr>
+              <td>
+                <h4>Mars Facts</h4>
+                {{ mars['mars_facts'] | safe }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- 5 columns End-->
+    </div>
+  </div>
+  <!-- End Featured Mars Image -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table" style="border: 2px solid lightgrey; background-color: white; ">
+          <thead"> 
+            <tr>
+              <h3 style="text-align:center">Mars Hemispheres</h3>
+            </tr>
+          </thead>
+
+          <table class="table" style="border: 2px solid lightgrey; background-color: white; ">
+            <tr>
+              <td style="border: 2px solid lightgrey;">
+                <!-- top left image table -->
+                <table class="table" background-color: white; ">
+                  <tr>
+                    <img width="100%" src="{{mars['hemisphere_image_url_list'][3]['img_url']}}">  
+                  </tr>
+                  <tr>
+                    <h3>Valles Marineris Hemisphere Enhanced</h3>
+                  </tr>
+                </table>
+              </td>  
+              
+              <td style="border: 2px solid lightgrey;">
+                <!-- top right image table -->
+                <table class="table" background-color: white; ">
+                  <tr>
+                    <img width="100%" src="{{mars['hemisphere_image_url_list'][1]['img_url']}}">
+                  </tr>
+                  <tr>
+                    <h3>Schiaparelli Hemisphere Enhanced</h3>
+                  </tr>
+                </table>
+              </td> 
+            </tr>
+
+            <tr>
+              <td style="border: 2px solid lightgrey;">
+                <!-- bottom left image table -->
+                <table class="table" background-color: white; ">
+                  <tr>
+                    <img style="object-fit: cover;" width="100%" src="{{mars['hemisphere_image_url_list'][0]['img_url']}}">  
+                  </tr>
+                  <tr>
+                    <h3>Cerberus Hemisphere Enhanced</h3>
+                  </tr>
+                </table>
+              </td>  
+              
+              <td style="border: 2px solid lightgrey;">
+                <!-- bottom right image table -->
+                <table class="table" style="background-color: white; ">
+                  <tr>
+                    <img style="object-fit: cover;" width="100%" src="{{mars['hemisphere_image_url_list'][2]['img_url']}}">  
+                  </tr>
+                  <tr>
+                    <h3>Syrtis Major Hemisphere Enhanced</h3>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
