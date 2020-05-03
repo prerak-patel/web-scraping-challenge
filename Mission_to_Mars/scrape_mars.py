@@ -7,7 +7,7 @@ def init_browser(url):
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
     browser = Browser("chrome", **executable_path, headless=True)
     browser.visit(url)
-    time.sleep(2)
+    time.sleep(5)
     html = browser.html
     soup = bs(html,'html.parser')
     soup.prettify()
@@ -99,7 +99,8 @@ def scrapeHemisphereTitleAndImageUrls(dictionary):
         full_res_image_url = soup.find('div', class_="downloads").find_all('li')[1].find('a')['href']
         hemisphere_image_urls.append({"image_title": image_title,"img_url": full_res_image_url})
        
-    
+    print('******** Print Hemisphere Url **********')
+    print(f'{hemisphere_image_urls}')
     
     dictionary['hemisphere_image_url_list'] = hemisphere_image_urls
             
