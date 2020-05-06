@@ -3,3 +3,5 @@ flask
 flask_pymongo
 splinter
 bs4
+selenium
+lxml

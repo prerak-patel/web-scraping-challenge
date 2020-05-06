@@ -1,17 +1,24 @@
 from splinter import Browser
+from selenium import webdriver
 from bs4 import BeautifulSoup as bs
 import pandas as pd
 import time
 
 def init_browser(url):
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
-    browser = Browser("chrome", **executable_path, headless=True)
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+
+    # browser = Browser("chrome", **executable_path, headless=True)
+    browser = Browser('chrome', options=chrome_options)
+
     browser.visit(url)
     time.sleep(5)
     html = browser.html
     soup = bs(html,'html.parser')
     soup.prettify()
-    
     return soup
 
 
@@ -116,14 +123,14 @@ def scrape():
     dictionary = scrapeMarsFacts(dictionary)
     dictionary = scrapeHemisphereTitleAndImageUrls(dictionary)
  
-    print(dictionary['latest_headline_title'])
-    print(dictionary['latest_headline_para'])
-    print('*********************************************************************************')
-    print(dictionary['mars_featured_image_url'])
-    print('*********************************************************************************')
-    print(dictionary['mars_facts'])
-    print('*********************************************************************************')
-    print(dictionary['hemisphere_image_url_list'])
+    # print(dictionary['latest_headline_title'])
+    # print(dictionary['latest_headline_para'])
+    # print('*********************************************************************************')
+    # print(dictionary['mars_featured_image_url'])
+    # print('*********************************************************************************')
+    # print(dictionary['mars_facts'])
+    # print('*********************************************************************************')
+    # print(dictionary['hemisphere_image_url_list'])
 
 
     return dictionary
